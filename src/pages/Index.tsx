@@ -86,7 +86,7 @@ const Index = () => {
     
     try {
       const result = await compileAndRun(code, language, inputCallback);
-      setOutput(result);
+      setOutput('[Simulation only — not real program execution]\n' + result);
     } catch (error) {
       setOutput(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       toast({
@@ -137,7 +137,7 @@ const Index = () => {
         <div>
           <h1 className="text-3xl font-bold mb-1">Code Hub</h1>
           <p className="text-muted-foreground">
-            Wanna Code
+            Editor prototype · output is simulated, not compiled
           </p>
         </div>
       </header>
@@ -179,7 +179,7 @@ const Index = () => {
       </div>
       
       <footer className="text-center text-sm text-muted-foreground pt-4">
-        <p>CodeShare - Compile and share your code easily</p>
+        <p>Code Hub — edit, share and explore simulated output</p>
       </footer>
       
       <ShareDialog
