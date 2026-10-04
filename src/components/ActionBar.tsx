@@ -54,7 +54,7 @@ const ActionBar: React.FC<ActionBarProps> = ({
           disabled={isRunning}
         >
           <Play size={16} />
-          {isRunning ? 'Running...' : 'Run'}
+          {isRunning ? 'Simulating...' : 'Simulate'}
         </Button>
       </div>
       <div className="flex items-center gap-2">

@@ -1,31 +1,51 @@
-# 🌐 Online Multi-Language Compiler 🔥
+# Code Hub
 
-A powerful web-based compiler built with **React** and **TypeScript** that supports multiple programming languages. Users can **write code**, **compile instantly**, **download** their work, and even **share code** with friends using a unique share link.
+A React and TypeScript browser editor for writing, downloading and sharing code snippets.
 
----
+**Status: frontend prototype.** The Run action uses local pattern-based simulations in `src/lib/codeUtils.ts`. It does not compile or execute arbitrary Python, C++, Java or JavaScript. There is no compilation API or API key to configure. The editor is a textarea with line numbers and tab indentation, not Monaco.
 
-## 🚀 Features
+## Implemented
 
-- ✅ **Real-time code editor** with syntax highlighting
-- 🌍 **Supports multiple languages** (e.g., C, C++, Java, Python, JavaScript)
-- 📦 **Download** your code files instantly
-- 🔗 **Share code** via a unique URL
-- 🌙 Light/Dark mode toggle
-- 🔧 Built with **React + TypeScript** and API integration for compilation
+- Language selection and starter snippets
+- Editing, copying and downloading code
+- Share links containing the snippet in the URL
+- Simulated output and input prompts for selected examples
 
----
+## Run locally
 
-## 🖥️ Tech Stack
+Use Node.js 22 and npm.
 
-| Technology      | Purpose                          |
-|----------------|----------------------------------|
-| React           | Frontend UI Framework            |
-| TypeScript      | Strongly-typed JavaScript        |
-| Monaco Editor   | Code editor (VSCode in-browser)  |
-| Axios/Fetch     | HTTP requests to backend API     |
-| REST API        | For code compilation             |
-| React Router    | Shareable routes via URL         |
-| Tailwind/SCSS   |  Styling                         |
+```bash
+git clone https://github.com/sajee-sajee/Code-Hub.git
+cd Code-Hub
+npm ci
+npm run dev
+```
 
+Open the address printed by Vite. To build and inspect the production bundle:
 
+```bash
+npm run build
+npm run preview
+```
 
+There are no required environment variables. Internet access is needed to install dependencies.
+
+## Two-minute demonstration
+
+1. Choose Python and edit the sample snippet.
+2. Select **Simulate** to explore the example output flow.
+3. Download the code and verify the file contents.
+4. Generate a share link and open it in a second tab.
+
+Share links expose their code and output in the URL. Do not include credentials or private code; long snippets can exceed browser URL limits.
+
+## Structure
+
+- `src/components/CodeEditor.tsx`: textarea editor
+- `src/pages/Index.tsx`: editor state and actions
+- `src/lib/codeUtils.ts`: example simulations, sharing and downloads
+
+## Next engineering milestone
+
+Integrate an isolated execution service with authentication, execution quotas, input/output limits and error handling. Until that exists, simulated results must not be used to assess program correctness. Build success verifies bundling, not real compilation behavior.
